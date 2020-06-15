@@ -20,7 +20,7 @@ describe(`welcome screen component`, () => {
 
     const startButton = welcomeScreen.find(`button.welcome__button`);
 
-    startButton.props().onClick();
+    startButton.simulate(`click`);
 
     expect(startButtonPressed).toHaveBeenCalledTimes(1);
   });
