@@ -4,11 +4,13 @@ import renderer from 'react-test-renderer';
 
 
 const errorCount = 42;
+const startButtonPressed = jest.fn();
 
 it(`correct render`, () => {
   const tree = renderer
     .create(<WelcomeScreen
       errorCount={errorCount}
+      startButtonPressed={startButtonPressed}
     />)
     .toJSON();
   expect(tree).toMatchSnapshot();
