@@ -6,16 +6,16 @@ const question = {
   type: `genre`,
   genre: `rock`,
   answers: [{
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `rock`,
   }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `blues`,
   }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `jazz`,
   }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+    src: `path`,
     genre: `rock`,
   }],
 };
@@ -24,16 +24,13 @@ describe(`genre-question-screen component snap`, () => {
   const onAnswer = jest.fn();
 
   it(`correct render`, () => {
-    const tree = renderer.create((
-      <GenreQuestionScreen
-        onAnswer={onAnswer}
-        question={question}
-      />
-    ), {
-      createNodeMock: () => {
-        return {};
-      }
-    }).toJSON();
+    const tree = renderer.create(
+        <GenreQuestionScreen
+          onAnswer={onAnswer}
+          question={question}
+        />
+    ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });
