@@ -6,7 +6,7 @@ import ArtistQuestionScreen from "../artist-question-screen/artist-question-scre
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 
 const App = (props) => {
-  const {errorCount, startButtonPressed} = props;
+  const {errorCount, startButtonPressed, onAnswer, question} = props;
   return (
     <BrowserRouter>
       <Switch>
@@ -20,7 +20,10 @@ const App = (props) => {
           <ArtistQuestionScreen />
         </Route>
         <Route exact path="/dev-genre">
-          <GenreQuestionScreen />
+          <GenreQuestionScreen
+            onAnswer={onAnswer}
+            question={question}
+          />
         </Route>
       </Switch>
     </BrowserRouter>
@@ -28,6 +31,15 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  onAnswer: PropTypes.func.isRequired,
+  question: PropTypes.shape({
+    answers: PropTypes.arrayOf(PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+    })).isRequired,
+    genre: PropTypes.string.isRequired,
+    // type: PropTypes.oneOf([GameType.ARTIST, GameType.GENRE]).isRequired,
+  }).isRequired,
   errorCount: PropTypes.number.isRequired,
   startButtonPressed: PropTypes.func.isRequired
 };
